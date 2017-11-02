@@ -1,7 +1,3 @@
 {
-  "name": "angular-baidu-maps",
-  "dependencies": {
-  },
-  "peerDependencies": {
-  }
+  "name": "angular-baidu-maps"
 }

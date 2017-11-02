@@ -1,6 +1,6 @@
 <div class="card mb-3">
     <div class="card-header">示例</div>
-    <div class="card-block">
+    <div class="card-body">
         <textarea highlight-js>&lt;abm-map #map [options]="options" (ready)="onReady($event)" style="height: 300px;"></abm-map></textarea>
         <abm-map #map [options]="options" (ready)="onReady($event)" style="height: 300px;"></abm-map>
         <p>{{status}}</p>
@@ -16,7 +16,7 @@
 </div>
 <div class="card mb-3">
     <div class="card-header">卫星地图</div>
-    <div class="card-block">
+    <div class="card-body">
         <abm-map [options]="satelliteOptions" (ready)="onReadySatellite($event)" style="height: 300px;"></abm-map>
     </div>
 </div>
