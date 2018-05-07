@@ -7,7 +7,8 @@ Angular 2+ Baidu Maps Components
 
 ## Demo
 
-[Live Demo](https://cipchk.github.io/angular-baidu-maps/)
+- [Live Demo](https://cipchk.github.io/angular-baidu-maps/)
+- [Stackblitz](https://stackblitz.com/edit/angular-baidu-maps)
 
 ### 1、安装
 
@@ -21,7 +22,7 @@ npm install angular-baidu-maps --save
 import { AbmModule } from 'angular-baidu-maps';
 
 @NgModule({
-    imports: [ 
+    imports: [
         BrowserModule,
         AbmModule.forRoot({
             apiKey: '' // app key为必选项

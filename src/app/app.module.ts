@@ -17,25 +17,22 @@ import { DemoPanoramaComponent } from './components/panorama.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([
+    RouterModule.forRoot(
+      [
         { path: '', component: DemoComponent },
-        { path: 'panorama', component: DemoPanoramaComponent }
-    ], { useHash: true }),
+        { path: 'panorama', component: DemoPanoramaComponent },
+      ],
+      { useHash: true },
+    ),
     CommonModule,
     HighlightJsModule,
-    
-    AbmModule.forRoot({
-        apiKey: 'p3HIQIqLqKVQOXao1IiLp5O0eTFakjEP'
-    })
-  ],
-  declarations: [
-    AppComponent,
-    DemoComponent,
-    DemoPanoramaComponent
-  ],
-  providers: [  ],
-  bootstrap: [AppComponent]
-})
 
-export class AppDemoModule {
-}
+    AbmModule.forRoot({
+      apiKey: 'p3HIQIqLqKVQOXao1IiLp5O0eTFakjEP',
+    }),
+  ],
+  declarations: [AppComponent, DemoComponent, DemoPanoramaComponent],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppDemoModule {}
