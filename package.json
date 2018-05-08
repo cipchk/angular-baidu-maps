@@ -1,6 +1,6 @@
 {
   "name": "angular-baidu-maps",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "./bundles/abm.umd.js",
   "module": "./esm5/abm.js",
   "es2015": "./esm2015/abm.js",
