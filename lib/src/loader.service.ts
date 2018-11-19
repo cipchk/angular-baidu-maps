@@ -1,14 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Inject, Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { AbmConfig } from './abm.config';
-
-declare const document: any;
 
 @Injectable()
 export class LoaderService {
   private _scriptLoadingPromise: Promise<void>;
   private _cog: any;
-  constructor(cog: AbmConfig) {
+  constructor(cog: AbmConfig, @Inject(DOCUMENT) private doc: any) {
     this._cog = Object.assign(
       <AbmConfig>{
         apiProtocol: 'auto',
@@ -25,7 +23,7 @@ export class LoaderService {
       return this._scriptLoadingPromise;
     }
 
-    const script = document.createElement('script');
+    const script = this.doc.createElement('script');
     script.type = 'text/javascript';
     script.async = true;
     script.defer = true;
@@ -43,7 +41,7 @@ export class LoaderService {
       },
     );
 
-    document.body.appendChild(script);
+    this.doc.body.appendChild(script);
     return this._scriptLoadingPromise;
   }
 

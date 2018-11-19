@@ -1,8 +1,6 @@
 import {
   Component,
   Input,
-  forwardRef,
-  ViewChild,
   ElementRef,
   OnDestroy,
   EventEmitter,
@@ -13,7 +11,6 @@ import {
   ViewEncapsulation,
   OnInit,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
 
 import { LoaderService } from './loader.service';
 import { AbmConfig } from './abm.config';
@@ -21,11 +18,15 @@ import { AbmConfig } from './abm.config';
 declare const BMap: any;
 
 @Component({
-  selector: 'abm-map',
+  selector: 'abm-panorama',
   template: ``,
   styles: [
     `
-        .angular-baidu-maps-container { display:block; width:100%; height:100%; }
+      .angular-baidu-maps-container {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     `,
   ],
   host: {
@@ -33,7 +34,7 @@ declare const BMap: any;
   },
   encapsulation: ViewEncapsulation.None,
 })
-export class AbmComponent implements OnInit, OnChanges, OnDestroy {
+export class AbmPanoramaComponent implements OnInit, OnChanges, OnDestroy {
   @Input() options: any = {};
   @Output() ready = new EventEmitter<any>();
 
@@ -61,9 +62,9 @@ export class AbmComponent implements OnInit, OnChanges, OnDestroy {
       .then(() => {
         this.zone.runOutsideAngular(() => {
           try {
-            this.map = new BMap.Map(this.el.nativeElement, this.options);
+            this.map = new BMap.Panorama(this.el.nativeElement, this.options);
           } catch (ex) {
-            console.warn('地图初始化失败', ex);
+            console.warn('全景初始化失败', ex);
           }
         });
         this.ready.emit(this.map);
@@ -74,18 +75,13 @@ export class AbmComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private _updateOptions() {
-    this.options = Object.assign({}, this.COG.mapOptions, this.options);
+    this.options = Object.assign({}, this.COG.panoramaOptions, this.options);
     if (this.map) {
       this.map.setOptions(this.options);
     }
   }
 
-  private destroy() {
-    if (this.map) {
-      this.map.clearOverlays();
-      this.map.clearHotspots();
-    }
-  }
+  private destroy() {}
 
   ngOnDestroy(): void {
     this.destroy();

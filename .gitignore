@@ -4,9 +4,6 @@
 /dist
 /tmp
 /out-tsc
-/__gen_lib
-/publish-es5
-/publish-es2015
 /publish
 
 # dependencies
@@ -35,6 +32,7 @@
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
+yarn.lock
 testem.log
 /typings
 
