@@ -54,6 +54,9 @@ export class LoaderService {
       case 'https':
         protocol = 'https:';
         break;
+      case 'file':
+        protocol = 'file:';
+        break;
       default:
         protocol = '';
         break;

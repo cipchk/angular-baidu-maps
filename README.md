@@ -76,13 +76,13 @@ ngOnDestroy(): void {
 
 | 名称    | 类型           | 默认值  | 描述 |
 | ------- | ------------- | ----- | ----- |
-| apiKey | string |  | APP KEY 必填项 |
-| apiHostAndPath | string | map.qq.com/api/js |  |
-| apiCallback | string | angularQQMapsLoader | API异步加载回调函数名 |
-| apiVersion | string | 2.exp | API版本号 |
-| apiProtocol | string | auto | API 请求协议 |
-| mapOptions | Object |  | 默认地图配置项，等同于[MapOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a0b1) |
-| panoramaOptions | Object |  | 默认全景配置项，等同于[PanoramaOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a8b1) |
+| `apiKey` | `string` | - | APP KEY 必填项 |
+| `apiHostAndPath` | `string` | `map.qq.com/api/js` | - |
+| `apiCallback` | `string` | `angularQQMapsLoader` | API异步加载回调函数名 |
+| `apiVersion` | `string` | `2.exp` | API版本号 |
+| `apiProtocol` | `http,https,file,auto` | `auto` | API 请求协议 |
+| `mapOptions` | `Object` | - | 默认地图配置项，等同于[MapOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a0b1) |
+| `panoramaOptions` | `Object` | - | 默认全景配置项，等同于[PanoramaOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a8b1) |
 
 ## Troubleshooting
 
