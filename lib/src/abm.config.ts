@@ -22,7 +22,7 @@ export class AbmConfig {
   /**
    * API 请求协议
    */
-  apiProtocol?: 'http' | 'https' | 'auto';
+  apiProtocol?: 'http' | 'https' | 'file' | 'auto';
 
   /**
    * 默认地图配置项，等同于[MapOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a0b1)
