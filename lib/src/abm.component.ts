@@ -47,16 +47,24 @@ export class AbmComponent implements OnInit, OnChanges, OnDestroy {
     private zone: NgZone,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if (!(typeof document === 'object' && !!document)) {
+      return;
+    }
+
     this._initMap();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ('options' in changes) this._updateOptions();
+    if ('options' in changes) {
+      this._updateOptions();
+    }
   }
 
-  private _initMap() {
-    if (this.map) return;
+  private _initMap(): void {
+    if (this.map) {
+      return;
+    }
     this.loader
       .load()
       .then(() => {
@@ -74,14 +82,14 @@ export class AbmComponent implements OnInit, OnChanges, OnDestroy {
       });
   }
 
-  private _updateOptions() {
-    this.options = Object.assign({}, this.COG.mapOptions, this.options);
+  private _updateOptions(): void {
+    this.options = { ...this.COG.mapOptions, ...this.options };
     if (this.map) {
       this.map.setOptions(this.options);
     }
   }
 
-  private destroy() {
+  private destroy(): void {
     if (this.map) {
       this.map.clearOverlays();
       this.map.clearHotspots();

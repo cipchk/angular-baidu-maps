@@ -7,15 +7,13 @@ export class LoaderService {
   private _scriptLoadingPromise: Promise<void>;
   private _cog: any;
   constructor(cog: AbmConfig, @Inject(DOCUMENT) private doc: any) {
-    this._cog = Object.assign(
-      <AbmConfig>{
-        apiProtocol: 'auto',
-        apiVersion: '2.0',
-        apiCallback: 'angularBaiduMapsLoader',
-        apiHostAndPath: 'api.map.baidu.com/api',
-      },
-      cog,
-    );
+    this._cog = {
+      apiProtocol: 'auto',
+      apiVersion: '3.0',
+      apiCallback: 'angularBaiduMapsLoader',
+      apiHostAndPath: 'api.map.baidu.com/api',
+      ...cog,
+    };
   }
 
   load(): Promise<void> {
@@ -30,8 +28,8 @@ export class LoaderService {
     script.src = this._getSrc();
 
     this._scriptLoadingPromise = new Promise<void>(
-      (resolve: Function, reject: Function) => {
-        (<any>window)[this._cog.apiCallback] = () => {
+      (resolve: () => void, reject: (error: Event) => void) => {
+        (window as any)[this._cog.apiCallback] = () => {
           resolve();
         };
 
@@ -76,7 +74,9 @@ export class LoaderService {
       })
       .map((k: string) => {
         const i = queryParams[k];
-        if (Array.isArray(i)) return { key: k, value: i.join(',') };
+        if (Array.isArray(i)) {
+          return { key: k, value: i.join(',') };
+        }
         return { key: k, value: i };
       })
       .map((entry: { key: string; value: string }) => {
