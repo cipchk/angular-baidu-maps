@@ -13,6 +13,9 @@ MIT
 @angular/router
 MIT
 
+angular-baidu-maps
+MIT
+
 ngx-highlight-js
 MIT
 MIT License
