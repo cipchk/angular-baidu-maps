@@ -1,6 +1,6 @@
 {
   "name": "angular-baidu-maps",
-  "version": "10.0.1",
+  "version": "10.0.0",
   "description": "Angular Baidu Maps Components",
   "keywords": [
     "angular-baidu-maps",
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/cipchk/angular-baidu-maps/issues"
   },
-  "homepage": "https://github.com/cipchk/angular-baidu-maps#readme",
+  "homepage": "https://cipchk.github.io/angular-baidu-maps/",
   "scripts": {
     "analyze": "ng build --prod --stats-json",
     "lint": "tslint -p tsconfig.json -c tslint.json 'lib/*/*.ts'",

@@ -1,26 +1,20 @@
 {
-  "name": "ngx-highlight-js",
-  "version": "10.0.1",
-  "description": "Simple, easy and performance countdown for angular",
+  "name": "angular-baidu-maps",
+  "version": "10.0.0",
+  "description": "Angular Baidu Maps Components",
   "keywords": [
-    "ngx-highlight-js",
-    "ng-countdown",
-    "angular-countdown",
-    "angular countdown",
-    "countdown",
-    "count down"
+    "angular-baidu-maps",
+    "ng2-baidu-maps",
+    "baidu maps"
   ],
-  "author": "cipchk <cipchk@qq.com>",
+  "author": "cipchk <cipchk>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cipchk/ngx-highlight-js"
+    "url": "git+https://github.com/cipchk/angular-baidu-maps.git"
   },
   "bugs": {
-    "url": "https://github.com/cipchk/ngx-highlight-js/issues"
+    "url": "https://github.com/cipchk/angular-baidu-maps/issues"
   },
-  "homepage": "https://cipchk.github.io/ngx-highlight-js/",
-  "peerDependencies": {
-    "@angular/core": "~10.0.0"
-  }
+  "homepage": "https://cipchk.github.io/angular-baidu-maps/"
 }
