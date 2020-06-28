@@ -5,7 +5,6 @@ import {
   ComponentFixtureAutoDetect,
   ComponentFixture,
 } from '@angular/core/testing';
-
 import { LoaderService } from '../src/loader.service';
 import { AbmModule } from '../index';
 
@@ -36,10 +35,12 @@ describe('Service: LoaderService', () => {
       loader.load();
       let script: HTMLScriptElement = null;
       const ls = htmlEl.querySelectorAll('script');
+      // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < ls.length; i++) {
         const node = ls[i];
-        // tslint:disable-next-line:no-bitwise
-        if (~node.src.indexOf('api.map.baidu.com/api')) script = node;
+        if (~node.src.indexOf('api.map.baidu.com/api')) {
+          script = node;
+        }
       }
 
       expect(script).not.toBeNull();

@@ -13,7 +13,7 @@ import { LoaderService } from './loader.service';
   exports: [AbmComponent, AbmPanoramaComponent],
 })
 export class AbmModule {
-  static forRoot(config: AbmConfig): ModuleWithProviders {
+  static forRoot(config: AbmConfig): ModuleWithProviders<AbmModule> {
     return {
       ngModule: AbmModule,
       providers: [{ provide: AbmConfig, useValue: config }],
