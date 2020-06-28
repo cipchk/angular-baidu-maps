@@ -9,6 +9,7 @@ const libPackagePath = path.resolve(root, `./lib/package.json`);
 const rootPackageJson = require(path.resolve(root, `./package.json`));
 const libPackageJson = require(libPackagePath);
 [
+  'name',
   'version',
   'description',
   'keywords',
