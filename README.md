@@ -1,9 +1,8 @@
 # angular-baidu-maps
-Angular 2+ Baidu Maps Components
+
+[Baidu Maps](http://lbsyun.baidu.com/) for Angular.
 
 [![NPM version](https://img.shields.io/npm/v/angular-baidu-maps.svg)](https://www.npmjs.com/package/angular-baidu-maps)
-[![Build Status](https://travis-ci.org/cipchk/angular-baidu-maps.svg?branch=master)](https://travis-ci.org/cipchk/angular-baidu-maps)
-
 
 ## Demo
 
@@ -22,14 +21,14 @@ npm install angular-baidu-maps --save
 import { AbmModule } from 'angular-baidu-maps';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        AbmModule.forRoot({
-            apiKey: '' // app key为必选项
-        })
-    ],
-    declarations: [AppComponent],
-    bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    AbmModule.forRoot({
+      apiKey: '' // app key为必选项
+    })
+  ],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
 ```
@@ -79,10 +78,10 @@ ngOnDestroy(): void {
 | `apiKey` | `string` | - | APP KEY 必填项 |
 | `apiHostAndPath` | `string` | `map.qq.com/api/js` | - |
 | `apiCallback` | `string` | `angularQQMapsLoader` | API异步加载回调函数名 |
-| `apiVersion` | `string` | `2.exp` | API版本号 |
+| `apiVersion` | `string` | `3.0` | API版本号 |
 | `apiProtocol` | `http,https,file,auto` | `auto` | API 请求协议 |
-| `mapOptions` | `Object` | - | 默认地图配置项，等同于[MapOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a0b1) |
-| `panoramaOptions` | `Object` | - | 默认全景配置项，等同于[PanoramaOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a8b1) |
+| `mapOptions` | `Object` | - | 默认地图配置项，等同于[MapOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a0b1) |
+| `panoramaOptions` | `Object` | - | 默认全景配置项，等同于[PanoramaOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a8b1) |
 
 ## Troubleshooting
 

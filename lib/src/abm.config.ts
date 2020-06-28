@@ -25,12 +25,12 @@ export class AbmConfig {
   apiProtocol?: 'http' | 'https' | 'file' | 'auto';
 
   /**
-   * 默认地图配置项，等同于[MapOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a0b1)
+   * 默认地图配置项，等同于[MapOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a0b1)
    */
   mapOptions?: any;
 
   /**
-   * 默认全景配置项，等同于[PanoramaOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a8b1)
+   * 默认全景配置项，等同于[PanoramaOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a8b1)
    */
   panoramaOptions?: any;
 }
