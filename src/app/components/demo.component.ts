@@ -1,11 +1,7 @@
 import {
   Component,
-  OnInit,
   ViewEncapsulation,
-  AfterViewInit,
   ViewChild,
-  ElementRef,
-  NgZone,
   OnDestroy
 } from '@angular/core';
 import { AbmComponent } from 'angular-baidu-maps';
@@ -22,12 +18,13 @@ declare const BMAP_SATELLITE_MAP: any;
 export class DemoComponent implements OnDestroy {
   options: any = {};
   status = '';
-  @ViewChild('map') mapComp: AbmComponent;
-
-  constructor(private el: ElementRef, private zone: NgZone) {}
+  @ViewChild('map') mapComp!: AbmComponent;
 
   private _map: any;
-  onReady(map: any) {
+
+  // 卫星
+  satelliteOptions: any;
+  onReady(map: any): void {
     this._map = map;
     map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
     map.addControl(new BMap.MapTypeControl());
@@ -41,19 +38,19 @@ export class DemoComponent implements OnDestroy {
     map.addEventListener('click', this._click.bind(this));
   }
 
-  _click(e: any) {
+  _click(e: any): void {
     this.status = `${e.point.lng}, ${e.point.lat}, ${+new Date()}`;
   }
 
-  panTo() {
+  panTo(): void {
     this._map.panTo(new BMap.Point(116.404, 39.715));
   }
 
-  zoom() {
+  zoom(): void {
     this._map.setZoom((this._map.getZoom() + 1) % 17);
   }
 
-  infoWindow() {
+  infoWindow(): void {
     const infoWin = new BMap.InfoWindow(
       '地址：北京市东城区王府井大街88号乐天银泰百货八层',
       {
@@ -66,14 +63,9 @@ export class DemoComponent implements OnDestroy {
     );
     this._map.openInfoWindow(infoWin, this._map.getCenter());
   }
-
-  // 卫星
-  satelliteOptions: any;
-  private mapSatellite: any;
-  onReadySatellite(map: any) {
+  onReadySatellite(map: any): void {
     map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
     map.setMapType(BMAP_SATELLITE_MAP);
-    this.mapSatellite = map;
   }
 
   ngOnDestroy(): void {
