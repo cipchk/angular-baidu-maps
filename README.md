@@ -3,6 +3,7 @@
 [Baidu Maps](http://lbsyun.baidu.com/) for Angular.
 
 [![NPM version](https://img.shields.io/npm/v/angular-baidu-maps.svg)](https://www.npmjs.com/package/angular-baidu-maps)
+![Ci](https://github.com/cipchk/angular-baidu-maps/workflows/Ci/badge.svg)
 
 ## Demo
 

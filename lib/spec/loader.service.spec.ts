@@ -33,12 +33,12 @@ describe('Service: LoaderService', () => {
     [LoaderService],
     (loader: LoaderService) => {
       loader.load();
-      let script: HTMLScriptElement = null;
+      let script!: HTMLScriptElement;
       const ls = htmlEl.querySelectorAll('script');
       // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < ls.length; i++) {
         const node = ls[i];
-        if (~node.src.indexOf('api.map.baidu.com/api')) {
+        if (node.src.indexOf('api.map.baidu.com/api') !== -1) {
           script = node;
         }
       }

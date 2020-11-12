@@ -4,8 +4,8 @@ import { AbmConfig } from './abm.config';
 
 @Injectable()
 export class LoaderService {
-  private _scriptLoadingPromise: Promise<void>;
-  private _cog: any;
+  private _scriptLoadingPromise?: Promise<void>;
+  private _cog!: any;
   constructor(cog: AbmConfig, @Inject(DOCUMENT) private doc: any) {
     this._cog = {
       apiProtocol: 'auto',

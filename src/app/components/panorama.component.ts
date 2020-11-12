@@ -1,10 +1,7 @@
 import {
   Component,
-  OnInit,
   ViewEncapsulation,
-  AfterViewInit,
   ViewChild,
-  ElementRef,
 } from '@angular/core';
 import { AbmPanoramaComponent } from 'angular-baidu-maps';
 
@@ -18,11 +15,9 @@ declare const BMap: any;
 })
 export class DemoPanoramaComponent {
   options: any = {};
-  @ViewChild('map') map: AbmPanoramaComponent;
+  @ViewChild('map') map!: AbmPanoramaComponent;
 
-  constructor(private el: ElementRef) {}
-
-  onReady(map: any) {
+  onReady(map: any): void {
     map.setPosition(new BMap.Point(116.321463, 39.984738));
     map.setPov({ pitch: 6, heading: 138 });
   }

@@ -1,13 +1,13 @@
 {
   "name": "angular-baidu-maps",
-  "version": "10.0.0",
+  "version": "11.0.0",
   "description": "Angular Baidu Maps Components",
   "keywords": [
     "angular-baidu-maps",
     "ng2-baidu-maps",
     "baidu maps"
   ],
-  "author": "cipchk <cipchk>",
+  "author": "cipchk <cipchk@qq.com>",
   "license": "MIT",
   "repository": {
     "type": "git",

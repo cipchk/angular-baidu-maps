@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /publish
+/yarn.lock
 
 # dependencies
 /node_modules
@@ -32,7 +33,6 @@
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
-yarn.lock
 testem.log
 /typings
 
