@@ -2,7 +2,7 @@ export class AbmConfig {
   /**
    * APP KEY 必填项
    */
-  apiKey: string;
+  apiKey?: string;
 
   /**
    * 默认：api.map.baidu.com/api
