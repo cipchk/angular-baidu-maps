@@ -1,24 +1,11 @@
-import {
-  Component,
-  Input,
-  ElementRef,
-  OnDestroy,
-  EventEmitter,
-  Output,
-  NgZone,
-  OnChanges,
-  SimpleChanges,
-  ViewEncapsulation,
-  OnInit,
-} from '@angular/core';
-
-import { LoaderService } from './loader.service';
-import { AbmConfig } from './abm.config';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { AbmBaseComponent } from './abm-base.component';
 
 declare const BMap: any;
 
 @Component({
-  selector: 'abm-panorama',
+  selector: 'abm-panorama, [abm-panorama]',
+  exportAs: 'abmPanoramaMap',
   template: ``,
   styles: [
     `
@@ -33,64 +20,20 @@ declare const BMap: any;
     '[class.angular-baidu-maps-container]': 'true',
   },
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AbmPanoramaComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() options: any = {};
-  @Output() ready = new EventEmitter<any>();
-
-  private map: any = null;
-
-  constructor(
-    private el: ElementRef,
-    private COG: AbmConfig,
-    private loader: LoaderService,
-    private zone: NgZone,
-  ) {}
-
-  ngOnInit(): void {
-    if (!(typeof document === 'object' && !!document)) {
-      return;
-    }
-    this._initMap();
+export class AbmPanoramaComponent extends AbmBaseComponent {
+  defaultOptions(): any {
+    return this.COG.panoramaOptions;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if ('options' in changes) {
-      this._updateOptions();
+  create(): void {
+    try {
+      this.map = new BMap.Panorama(this.el.nativeElement, this.options);
+    } catch (ex) {
+      console.warn('全景初始化失败', ex);
     }
   }
 
-  private _initMap(): void {
-    if (this.map) {
-      return;
-    }
-    this.loader
-      .load()
-      .then(() => {
-        this.zone.runOutsideAngular(() => {
-          try {
-            this.map = new BMap.Panorama(this.el.nativeElement, this.options);
-          } catch (ex) {
-            console.warn('全景初始化失败', ex);
-          }
-        });
-        this.ready.emit(this.map);
-      })
-      .catch((error: Error) => {
-        console.warn('js加载失败', error);
-      });
-  }
-
-  private _updateOptions(): void {
-    this.options = { ...this.COG.panoramaOptions, ...this.options };
-    if (this.map) {
-      this.map.setOptions(this.options);
-    }
-  }
-
-  private destroy(): void {}
-
-  ngOnDestroy(): void {
-    this.destroy();
-  }
+  destroy(): void {}
 }

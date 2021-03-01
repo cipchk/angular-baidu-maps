@@ -1,24 +1,11 @@
-import {
-  Component,
-  Input,
-  ElementRef,
-  OnDestroy,
-  EventEmitter,
-  Output,
-  NgZone,
-  OnChanges,
-  SimpleChanges,
-  ViewEncapsulation,
-  OnInit,
-} from '@angular/core';
-
-import { LoaderService } from './loader.service';
-import { AbmConfig } from './abm.config';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { AbmBaseComponent } from './abm-base.component';
 
 declare const BMap: any;
 
 @Component({
-  selector: 'abm-map',
+  selector: 'abm-map, [abm-map]',
+  exportAs: 'abmMap',
   template: ``,
   styles: [
     `
@@ -33,70 +20,25 @@ declare const BMap: any;
     '[class.angular-baidu-maps-container]': 'true',
   },
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AbmComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() options: any = {};
-  @Output() ready = new EventEmitter<any>();
-
-  private map: any = null;
-
-  constructor(
-    private el: ElementRef,
-    private COG: AbmConfig,
-    private loader: LoaderService,
-    private zone: NgZone,
-  ) {}
-
-  ngOnInit(): void {
-    if (!(typeof document === 'object' && !!document)) {
-      return;
-    }
-
-    this._initMap();
+export class AbmComponent extends AbmBaseComponent {
+  defaultOptions(): any {
+    return this.COG.mapOptions;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if ('options' in changes) {
-      this._updateOptions();
+  create(): void {
+    try {
+      this.map = new BMap.Map(this.el.nativeElement, this.options);
+    } catch (ex) {
+      console.warn('地图初始化失败', ex);
     }
   }
 
-  private _initMap(): void {
-    if (this.map) {
-      return;
-    }
-    this.loader
-      .load()
-      .then(() => {
-        this.zone.runOutsideAngular(() => {
-          try {
-            this.map = new BMap.Map(this.el.nativeElement, this.options);
-          } catch (ex) {
-            console.warn('地图初始化失败', ex);
-          }
-        });
-        this.ready.emit(this.map);
-      })
-      .catch((error: Error) => {
-        console.warn('js加载失败', error);
-      });
-  }
-
-  private _updateOptions(): void {
-    this.options = { ...this.COG.mapOptions, ...this.options };
-    if (this.map) {
-      this.map.setOptions(this.options);
-    }
-  }
-
-  private destroy(): void {
+  destroy(): void {
     if (this.map) {
       this.map.clearOverlays();
       this.map.clearHotspots();
     }
-  }
-
-  ngOnDestroy(): void {
-    this.destroy();
   }
 }

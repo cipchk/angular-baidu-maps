@@ -27,6 +27,7 @@ import { DemoPanoramaComponent } from './components/panorama.component';
 
     AbmModule.forRoot({
       apiKey: 'p3HIQIqLqKVQOXao1IiLp5O0eTFakjEP',
+      libraries: ['//api.map.baidu.com/library/RectangleZoom/1.2/src/RectangleZoom_min.js'],
     }),
   ],
   declarations: [AppComponent, DemoComponent, DemoPanoramaComponent],
