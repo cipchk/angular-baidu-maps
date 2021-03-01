@@ -33,4 +33,9 @@ export class AbmConfig {
    * 默认全景配置项，等同于[PanoramaOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a8b1)
    */
   panoramaOptions?: any;
+
+  /**
+   * 其他类库地址，例如 `BMapLib` 就需要引入：`['//api.map.baidu.com/library/RectangleZoom/1.2/src/RectangleZoom_min.js']`
+   */
+  libraries?: string[];
 }

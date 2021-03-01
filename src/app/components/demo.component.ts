@@ -1,12 +1,8 @@
-import {
-  Component,
-  ViewEncapsulation,
-  ViewChild,
-  OnDestroy
-} from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, OnDestroy } from '@angular/core';
 import { AbmComponent } from 'angular-baidu-maps';
 
 declare const BMap: any;
+declare const BMapLib: any;
 declare const BMAP_SATELLITE_MAP: any;
 
 @Component({
@@ -17,6 +13,7 @@ declare const BMAP_SATELLITE_MAP: any;
 })
 export class DemoComponent implements OnDestroy {
   options: any = {};
+  bMapLibOptions: any = {};
   status = '';
   @ViewChild('map') mapComp!: AbmComponent;
 
@@ -51,21 +48,26 @@ export class DemoComponent implements OnDestroy {
   }
 
   infoWindow(): void {
-    const infoWin = new BMap.InfoWindow(
-      '地址：北京市东城区王府井大街88号乐天银泰百货八层',
-      {
-        width: 200, // 信息窗口宽度
-        height: 100, // 信息窗口高度
-        title: '海底捞王府井店', // 信息窗口标题
-        enableMessage: true, // 设置允许信息窗发送短息
-        message: '亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~',
-      },
-    );
+    const infoWin = new BMap.InfoWindow('地址：北京市东城区王府井大街88号乐天银泰百货八层', {
+      width: 200, // 信息窗口宽度
+      height: 100, // 信息窗口高度
+      title: '海底捞王府井店', // 信息窗口标题
+      enableMessage: true, // 设置允许信息窗发送短息
+      message: '亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~',
+    });
     this._map.openInfoWindow(infoWin, this._map.getCenter());
   }
   onReadySatellite(map: any): void {
     map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
     map.setMapType(BMAP_SATELLITE_MAP);
+  }
+
+  onReadyBMapLib(map: any): void {
+    map.centerAndZoom('重庆', 12);
+    const myDrag = new BMapLib.RectangleZoom(map, {
+      followText: '拖拽鼠标进行操作',
+    });
+    myDrag.open(); // 开启拉框放大
   }
 
   ngOnDestroy(): void {

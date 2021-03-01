@@ -83,6 +83,7 @@ ngOnDestroy(): void {
 | `apiProtocol` | `http,https,file,auto` | `auto` | API 请求协议 |
 | `mapOptions` | `Object` | - | 默认地图配置项，等同于[MapOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a0b1) |
 | `panoramaOptions` | `Object` | - | 默认全景配置项，等同于[PanoramaOptions 对象规范](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a8b1) |
+| `libraries` | `string[]` | - | 其他类库地址，例如 `BMapLib` 就需要引入：`['//api.map.baidu.com/library/RectangleZoom/1.2/src/RectangleZoom_min.js']` |
 
 ## Troubleshooting
 

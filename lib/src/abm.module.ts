@@ -1,6 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AbmComponent } from './abm.component';
 import { AbmPanoramaComponent } from './abm-panorama.component';
 import { AbmConfig } from './abm.config';
