@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HighlightJsModule } from 'ngx-highlight-js';
-
 import { AbmModule } from 'angular-baidu-maps';
 
 import { AppComponent } from './app.component';

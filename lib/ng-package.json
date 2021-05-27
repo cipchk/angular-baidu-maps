@@ -4,6 +4,5 @@
   "deleteDestPath": true,
   "lib": {
     "entryFile": "public_api.ts"
-  },
-  "whitelistedNonPeerDependencies": ["tslib", "angular"]
+  }
 }
