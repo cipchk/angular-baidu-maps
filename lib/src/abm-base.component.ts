@@ -4,7 +4,6 @@ import { AbmConfig } from './abm.config';
 import { LoaderService } from './loader.service';
 
 @Directive()
-// tslint:disable-next-line: directive-class-suffix
 export abstract class AbmBaseComponent implements OnInit, OnChanges, OnDestroy {
   protected destroy$ = new Subject<void>();
   @Input() options!: any;

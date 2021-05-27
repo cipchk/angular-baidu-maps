@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  inject,
-  TestBed,
-  ComponentFixtureAutoDetect,
-  ComponentFixture,
-} from '@angular/core/testing';
+import { inject, TestBed, ComponentFixtureAutoDetect, ComponentFixture } from '@angular/core/testing';
 import { LoaderService } from '../src/loader.service';
 import { AbmModule } from '../index';
 
@@ -17,10 +12,7 @@ describe('Service: LoaderService', () => {
     TestBed.configureTestingModule({
       declarations: [EmptyTestComponent],
       imports: [AbmModule.forRoot({ apiKey: '' })],
-      providers: [
-        LoaderService,
-        { provide: ComponentFixtureAutoDetect, useValue: true },
-      ],
+      providers: [LoaderService, { provide: ComponentFixtureAutoDetect, useValue: true }],
     });
 
     fixture = TestBed.createComponent(EmptyTestComponent);
@@ -29,27 +21,23 @@ describe('Service: LoaderService', () => {
     htmlEl = findParent(el, 'html');
   });
 
-  it('should create the default script URL', inject(
-    [LoaderService],
-    (loader: LoaderService) => {
-      loader.load();
-      let script!: HTMLScriptElement;
-      const ls = htmlEl.querySelectorAll('script');
-      // tslint:disable-next-line: prefer-for-of
-      for (let i = 0; i < ls.length; i++) {
-        const node = ls[i];
-        if (node.src.indexOf('api.map.baidu.com/api') !== -1) {
-          script = node;
-        }
+  it('should create the default script URL', inject([LoaderService], (loader: LoaderService) => {
+    loader.load();
+    let script!: HTMLScriptElement;
+    const ls = htmlEl.querySelectorAll('script');
+    for (let i = 0; i < ls.length; i++) {
+      const node = ls[i];
+      if (node.src.indexOf('api.map.baidu.com/api') !== -1) {
+        script = node;
       }
+    }
 
-      expect(script).not.toBeNull();
-      expect(script.type).toEqual('text/javascript');
-      expect(script.async).toEqual(true);
-      expect(script.defer).toEqual(true);
-      expect(script.src).toBeDefined();
-    },
-  ));
+    expect(script).not.toBeNull();
+    expect(script.type).toEqual('text/javascript');
+    expect(script.async).toEqual(true);
+    expect(script.defer).toEqual(true);
+    expect(script.src).toBeDefined();
+  }));
 });
 
 function findParent(el: any, selector: string): any {
